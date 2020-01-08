@@ -9,4 +9,6 @@ test("renders a span with the text Hello World", () => {
   // console.log(wrapper.debug());
   const element = wrapper.queryByText(/hello world/i);
   expect(element).toBeInTheDocument();
+  expect(element).toBeTruthy();
+  expect(element).toBeVisible();
 });
