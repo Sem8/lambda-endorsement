@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders corectly 1`] = `
+<body>
+  <div>
+    <div
+      data-testid="container"
+    >
+      <h3
+        id="helloHeading"
+      >
+        Hello World
+      </h3>
+      <p
+        class="paragraph"
+      >
+        Lorem Ipsum
+      </p>
+    </div>
+  </div>
+</body>
+`;
