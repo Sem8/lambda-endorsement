@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import * as rtl from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "./App";
-afterEach(rtl.cleanup);
+afterEach(rtl.cleanup); /* Press u to update snapshot if something changed */
 
 // test("renders a span with the text Hello World", () => {
 //   const wrapper = rtl.render(<App />);
@@ -31,8 +31,7 @@ afterEach(rtl.cleanup);
 //   });
 // });
 
-/* React snapshot testing */
-// describe("App", () => {
+/* React snapshot testing */ // describe("App", () => {
 //   it("renders a container", () => {
 //     const wrapper = rtl.render(<App />);
 //     expect(wrapper.getByTestId(/container/i));
