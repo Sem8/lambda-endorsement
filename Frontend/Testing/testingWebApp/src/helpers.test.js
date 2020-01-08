@@ -1,5 +1,8 @@
 const help = require("./helpers");
 
+jest.useFakeTimers();
+jest.mock("uuid", () => "123");
+
 // describe("helpers mdoule", () => {
 //   describe("sum function", () => {
 //     it("can add two numbers", () => {
@@ -19,10 +22,11 @@ const help = require("./helpers");
 //   });
 // });
 
-/* Testing part II */
+/* Testing part II - Testing async code */
 describe("asyncThing function", () => {
   it("resolves to 7 eventually", async () => {
     const promise = help.asyncThing(Function.prototype);
+    jest.runAllTimers(); // makes running tests faster when waiting for async code, write it before the await
     const resolved = await promise;
     expect(resolved).toBe(7);
   });
@@ -30,8 +34,9 @@ describe("asyncThing function", () => {
   it("invokes the callback eventually", async () => {
     const spy = jest.fn();
     expect(spy).not.toBeCalled();
-    const promise = await help.asyncThing(spy);
-    // await promise;
+    const promise = help.asyncThing(spy);
+    jest.runAllTimers(); // makes running tests faster when waiting for async code, write it before the await
+    await promise;
     expect(spy).toBeCalled();
   });
 });
