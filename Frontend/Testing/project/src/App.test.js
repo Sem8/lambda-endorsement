@@ -31,7 +31,9 @@ afterEach(rtl.cleanup); /* Press u to update snapshot if something changed */
 //   });
 // });
 
-/* React snapshot testing */ // describe("App", () => {
+/* React snapshot testing */
+
+// describe("App", () => {
 //   it("renders a container", () => {
 //     const wrapper = rtl.render(<App />);
 //     expect(wrapper.getByTestId(/container/i));
@@ -48,9 +50,26 @@ afterEach(rtl.cleanup); /* Press u to update snapshot if something changed */
 //   });
 // });
 
+// describe("App", () => {
+//   it("renders corectly", () => {
+//     const wrapper = rtl.render(<App />);
+//     expect(wrapper.baseElement).toMatchSnapshot();
+//   });
+// });
+
+/* Events and Async testing */
 describe("App", () => {
-  it("renders corectly", () => {
+  it("renders a container element", () => {
     const wrapper = rtl.render(<App />);
-    expect(wrapper.baseElement).toMatchSnapshot();
+    expect(wrapper.getByTestId(/container/i));
   });
+
+  it('renders success message after clicking button', async () => {
+    const wrapper = rtl.render(<App />);
+    const button = wrapper.getByTestId('button');
+    expect(wrapper.queryByText(/success/i)).not.toBeInTheDocument();
+    rtl.fireEvent.click(button);
+    expect(await wrapper.findByText(/success/i))
+
+  })
 });
