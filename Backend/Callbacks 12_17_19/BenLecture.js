@@ -1,3 +1,14 @@
+// stack trace: order of all the functions open at the time the app crashed
+function foo() {
+  // declaration
+}
+
+const bar = function() {
+  // expression (b/c there's an equal sign)
+}
+foo()
+bar()
+
 // const x = 5;
 // const y = () => {};
 // const foos = [() => {console.log('hi');}, function() {}, function foo() {}, y];
